@@ -1,0 +1,7 @@
+{
+    "name": "do-it-monorepo",
+    "private": true,
+    "scripts": {
+        "build": "cd frontend && npm install && npm run build"
+    }
+}
