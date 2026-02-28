@@ -2,6 +2,7 @@ services:
   - type: web
     name: do-it-backend
     env: python
+    rootDir: backend
     buildCommand: "./build.sh"
     startCommand: "gunicorn taskmanager.wsgi:application"
     envVars:
