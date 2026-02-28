@@ -1,0 +1,67 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.layout__body {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow-x: hidden;
+  /* Keep sliding elements contained if needed, while allowing vertical expansions */
+}
+
+.layout__content {
+  flex: 1;
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height, 64px));
+  transition: margin-left var(--transition), width var(--transition);
+}
+
+/* Optional: Shift content if sidebar pushes (Google cloud often overlays, or pushes depending on screen)
+   For now, we'll let sidebar overlay on top, which is simplest and looks like the drawer in image 3.
+*/
+.layout__overlay {
+  position: fixed;
+  inset: 0;
+  top: var(--header-height, 64px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.layout__overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+
+  /* On large screens, we push the content when sidebar is open */
+  .layout__content--shifted {
+    margin-left: var(--sidebar-width, 260px);
+    width: calc(100% - var(--sidebar-width, 260px));
+    transition: margin-left var(--transition), width var(--transition);
+  }
+}
+
+@media (max-width: 768px) {
+  .layout__content {
+    padding: 16px;
+  }
+
+  .layout__overlay {
+    display: block;
+    top: 0;
+    /* Cover everything on mobile */
+    z-index: 99;
+    /* Cover header too if we want, but keeping below is fine. Let's cover header on mobile. */
+  }
+}

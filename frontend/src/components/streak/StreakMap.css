@@ -1,0 +1,174 @@
+.streak-map {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.streak-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.streak-map__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.streak-map__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.streak-legend__label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.streak-map__grid-wrap {
+  display: flex;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.streak-map__days {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  gap: 2px;
+  padding-top: 20px;
+}
+
+.streak-day-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+
+.streak-day-label--visible {
+  opacity: 1;
+}
+
+.streak-map__scroll {
+  overflow-x: auto;
+  flex: 1;
+}
+
+.streak-map__months {
+  position: relative;
+  height: 18px;
+  margin-bottom: 4px;
+}
+
+.streak-month-label {
+  position: absolute;
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.streak-map__grid {
+  display: flex;
+  gap: 2px;
+}
+
+.streak-week {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  gap: 2px;
+}
+
+.streak-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  animation: fadeIn 0.3s ease both;
+}
+
+.streak-cell:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.streak-cell--empty {
+  background: transparent;
+  cursor: default;
+}
+
+.streak-cell--none {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.streak-cell--low {
+  background: #bbf7d0;
+}
+
+.streak-cell--mid {
+  background: #4ade80;
+}
+
+.streak-cell--high {
+  background: #16a34a;
+}
+
+[data-theme="dark"] .streak-cell--none {
+  background: #292524;
+}
+
+[data-theme="dark"] .streak-cell--low {
+  background: #14532d;
+}
+
+[data-theme="dark"] .streak-cell--mid {
+  background: #166534;
+}
+
+[data-theme="dark"] .streak-cell--high {
+  background: #15803d;
+}
+
+.streak-tooltip {
+  background: var(--bg-sidebar);
+  color: #a8a29e;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .streak-tooltip {
+  background: #1c1917;
+  /* Always keep tooltip dark for popover aesthetics */
+}
+
+.streak-tooltip strong {
+  font-weight: 800;
+}
+
+.streak-tooltip--none strong {
+  color: #a8a29e;
+}
+
+.streak-tooltip--low strong {
+  color: #4ade80;
+}
+
+.streak-tooltip--mid strong {
+  color: #22c55e;
+}
+
+.streak-tooltip--high strong {
+  color: #16a34a;
+}

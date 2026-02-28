@@ -1,0 +1,99 @@
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  animation: fadeIn 0.4s ease;
+  min-width: 0;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.stat-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.stat-card--indigo .stat-card__icon {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.stat-card--emerald .stat-card__icon {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.stat-card--amber .stat-card__icon {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.stat-card--rose .stat-card__icon {
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.stat-card--violet .stat-card__icon {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.stat-card__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card__value {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 800;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card__title {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.stat-card__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.stat-card__trend {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 99px;
+  align-self: flex-start;
+}
+
+.stat-card__trend--up {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-3);
+}
+
+.stat-card__trend--down {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--accent-4);
+}

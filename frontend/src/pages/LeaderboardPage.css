@@ -1,0 +1,325 @@
+.leaderboard-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+}
+
+.leaderboard-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.leaderboard-header__title {
+    font-size: 36px;
+    font-weight: 900;
+    font-family: var(--font-display);
+    margin-bottom: 12px;
+}
+
+.leaderboard-header__subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Using gap instead of touching borders to create separate distinct cards */
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Base Item Properties */
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.leaderboard-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Shining Glow animation sweeping entirely over the TOP cards */
+.leaderboard-item.top-1-card::after,
+.leaderboard-item.top-2-card::after,
+.leaderboard-item.top-3-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    /* Bright white reflection passing over */
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-25deg);
+    animation: shineSweep 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+}
+
+[data-theme="dark"] .leaderboard-item.top-1-card::after,
+[data-theme="dark"] .leaderboard-item.top-2-card::after,
+[data-theme="dark"] .leaderboard-item.top-3-card::after {
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+@keyframes shineSweep {
+    0% {
+        left: -150%;
+    }
+
+    35% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.leaderboard-rank {
+    font-size: 28px;
+    font-weight: 900;
+    font-family: var(--font-display);
+    width: 60px;
+    text-align: center;
+    margin-right: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   TOP 1 - GOLDEN CARD 
+   ========================================= */
+.leaderboard-item.top-1-card {
+    border: 4px solid #f59e0b;
+    /* Broad Golden Border */
+    background: linear-gradient(145deg, rgba(253, 224, 71, 0.2), rgba(217, 119, 6, 0.05));
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.2), inset 0 0 15px rgba(245, 158, 11, 0.2);
+    transform: scale(1.02);
+    /* Make Rank 1 slightly larger */
+    padding: 24px;
+}
+
+.leaderboard-item.top-1-card:hover {
+    transform: scale(1.02) translateY(-2px);
+}
+
+.leaderboard-item.top-1-card .leaderboard-rank {
+    color: transparent;
+    background: linear-gradient(135deg, #fde047 20%, #f59e0b 50%, #b45309 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textShimmer 5s linear infinite;
+    font-size: 34px;
+}
+
+/* =========================================
+   TOP 2 - SILVER CARD 
+   ========================================= */
+.leaderboard-item.top-2-card {
+    border: 4px solid #94a3b8;
+    /* Broad Silver Border */
+    background: linear-gradient(145deg, rgba(241, 245, 249, 0.2), rgba(100, 116, 139, 0.05));
+    box-shadow: 0 6px 20px rgba(148, 163, 184, 0.2), inset 0 0 15px rgba(148, 163, 184, 0.2);
+}
+
+.leaderboard-item.top-2-card .leaderboard-rank {
+    color: transparent;
+    background: linear-gradient(135deg, #f8fafc 20%, #94a3b8 50%, #475569 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textShimmer 6s linear infinite;
+}
+
+/* =========================================
+   TOP 3 - BRONZE CARD 
+   ========================================= */
+.leaderboard-item.top-3-card {
+    border: 4px solid #d97706;
+    /* Broad Bronze Border */
+    background: linear-gradient(145deg, rgba(253, 186, 116, 0.2), rgba(154, 52, 18, 0.05));
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.2), inset 0 0 15px rgba(217, 119, 6, 0.2);
+}
+
+.leaderboard-item.top-3-card .leaderboard-rank {
+    color: transparent;
+    background: linear-gradient(135deg, #fed7aa 20%, #ea580c 50%, #9a3412 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textShimmer 7s linear infinite;
+}
+
+
+/* =========================================
+   OTHERS - SIMPLE CARD 
+   ========================================= */
+.leaderboard-item.top-other-card {
+    /* Simple but neat border */
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.leaderboard-item.top-other-card:hover {
+    border-color: var(--accent-primary);
+}
+
+.leaderboard-item.top-other-card .leaderboard-rank {
+    font-size: 22px;
+    color: var(--text-tertiary);
+    text-shadow: none;
+}
+
+
+/* Common UI Elements */
+.leaderboard-user {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 1;
+}
+
+.leaderboard-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    font-family: var(--font-display);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--bg-primary);
+}
+
+.leaderboard-item.top-other-card .leaderboard-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+    border-width: 2px;
+}
+
+.leaderboard-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leaderboard-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboard-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    font-family: var(--font-display);
+}
+
+.leaderboard-item.top-other-card .leaderboard-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.leaderboard-bio {
+    font-size: 14px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.leaderboard-item.top-other-card .leaderboard-bio {
+    font-size: 13px;
+}
+
+.leaderboard-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: var(--bg-primary);
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.leaderboard-item.top-other-card .leaderboard-stats {
+    padding: 0;
+    background: transparent;
+    border: none;
+    align-items: flex-end;
+}
+
+.leaderboard-score {
+    font-size: 26px;
+    font-weight: 900;
+    font-family: var(--font-display);
+    color: var(--text-primary);
+}
+
+.leaderboard-item.top-1-card .leaderboard-score {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.leaderboard-item.top-2-card .leaderboard-score {
+    background: linear-gradient(135deg, #64748b, #475569);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.leaderboard-item.top-3-card .leaderboard-score {
+    background: linear-gradient(135deg, #ea580c, #9a3412);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.leaderboard-item.top-other-card .leaderboard-score {
+    font-size: 20px;
+}
+
+.leaderboard-score-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    margin-top: -2px;
+}

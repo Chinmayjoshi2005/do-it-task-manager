@@ -1,0 +1,102 @@
+.calendar-widget {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.calendar-widget__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar-widget__month {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.calendar-widget__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendar-widget__nav button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    transition: all var(--transition);
+}
+
+.calendar-widget__nav button:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.calendar-widget__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+
+.calendar-widget__day-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.calendar-widget__day {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-widget__day.empty {
+    visibility: hidden;
+}
+
+.calendar-widget__day-inner {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.calendar-widget__day:not(.empty):hover .calendar-widget__day-inner {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.calendar-widget__day.today .calendar-widget__day-inner {
+    background: var(--accent-3);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="dark"] .calendar-widget__day.today .calendar-widget__day-inner {
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+}
