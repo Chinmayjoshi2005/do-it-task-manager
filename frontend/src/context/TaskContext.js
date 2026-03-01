@@ -27,8 +27,8 @@ export const TaskProvider = ({ children }) => {
     setStats(res.data);
   }, []);
 
-  const fetchStreakData = useCallback(async () => {
-    const res = await api.get('/streak-data/');
+  const fetchStreakData = useCallback(async (year = 'Recent') => {
+    const res = await api.get('/streak-data/', { params: { year } });
     setStreakData(res.data);
   }, []);
 

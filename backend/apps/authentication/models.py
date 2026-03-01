@@ -11,7 +11,7 @@ class User(AbstractUser):
     security_answer_hash = models.CharField(max_length=64, default='')
     
     # Profile Extensions
-    bio = models.TextField(default='Software Engineer and ambitious learner exploring modern web development and algorithms. Focused on daily consistency.', blank=True)
+    bio = models.TextField(default='hey i am using do it', blank=True)
     location = models.CharField(max_length=150, default='Earth', blank=True)
     skills = models.CharField(max_length=300, default='React,Django,Python,UI/UX,Algorithms', blank=True)
     avatar_base64 = models.TextField(blank=True, null=True)

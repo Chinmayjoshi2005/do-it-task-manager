@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import Footer from './Footer';
 import './Layout.css';
 
 export default function Layout() {
@@ -27,8 +28,11 @@ export default function Layout() {
       <Header onMenuClick={toggleSidebar} />
       <div className="layout__body">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className={`layout__content ${sidebarOpen ? 'layout__content--shifted' : ''}`}>
-          <Outlet />
+        <main className={`layout__content ${sidebarOpen ? 'layout__content--shifted' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ flex: 1, paddingBottom: 40 }}>
+            <Outlet />
+          </div>
+          <Footer />
         </main>
       </div>
       <div

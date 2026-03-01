@@ -86,13 +86,27 @@ class StreakDataView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        today = date.today()
-        start_date = today - timedelta(days=364)
+        year = request.query_params.get('year', 'Recent')
+        
+        if year != 'Recent':
+            try:
+                yr = int(year)
+                start_date = date(yr, 1, 1)
+                end_date = date(yr, 12, 31)
+                num_days = (end_date - start_date).days + 1
+            except ValueError:
+                end_date = date.today()
+                start_date = end_date - timedelta(days=364)
+                num_days = 365
+        else:
+            end_date = date.today()
+            start_date = end_date - timedelta(days=364)
+            num_days = 365
 
         tasks = Task.objects.filter(
             user=request.user,
             due_date__gte=start_date,
-            due_date__lte=today
+            due_date__lte=end_date
         ).values('due_date').annotate(
             total=Count('id'),
             completed_count=Count('id', filter=Q(completed=True))
@@ -109,7 +123,7 @@ class StreakDataView(APIView):
 
         # Fill in missing dates with zeros
         result = []
-        for i in range(365):
+        for i in range(num_days):
             d = (start_date + timedelta(days=i)).isoformat()
             result.append(data.get(d, {'date': d, 'total': 0, 'completed': 0}))
 

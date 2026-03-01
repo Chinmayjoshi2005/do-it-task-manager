@@ -16,10 +16,17 @@ const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export default function StreakMap() {
   const { streakData, fetchStreakData } = useTasks();
   const [tooltip, setTooltip] = useState(null);
+  const [selectedYear, setSelectedYear] = useState('Recent');
+
+  const currentYear = new Date().getFullYear();
+  const yearOptions = ['Recent'];
+  for (let i = 0; i < 5; i++) {
+    yearOptions.push((currentYear - i).toString());
+  }
 
   useEffect(() => {
-    fetchStreakData();
-  }, [fetchStreakData]);
+    fetchStreakData(selectedYear);
+  }, [fetchStreakData, selectedYear]);
 
   if (!streakData) return (
     <div className="streak-map">
@@ -70,7 +77,26 @@ export default function StreakMap() {
   return (
     <div className="streak-map">
       <div className="streak-map__header">
-        <h3 className="streak-map__title">Activity Heatmap</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <h3 className="streak-map__title">Activity Heatmap</h3>
+          <select
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value)}
+            style={{
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-primary)',
+              padding: '6px 12px',
+              borderRadius: '8px',
+              fontSize: '13px',
+              fontWeight: '500',
+              outline: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            {yearOptions.map(y => <option key={y} value={y}>{y}</option>)}
+          </select>
+        </div>
         <div className="streak-map__legend">
           <span className="streak-legend__label">Less</span>
           <div className="streak-cell streak-cell--none" />
