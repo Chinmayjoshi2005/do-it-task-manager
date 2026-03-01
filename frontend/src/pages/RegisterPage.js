@@ -37,15 +37,20 @@ export default function RegisterPage() {
       await register(form);
       navigate('/dashboard');
     } catch (err) {
-      const errs = err.response?.data?.errors || {};
-      if (typeof errs === 'object') {
+      const errData = err.response?.data;
+      const errs = errData?.errors || {};
+      if (typeof errs === 'object' && Object.keys(errs).length > 0) {
         const flat = {};
         for (const [k, v] of Object.entries(errs)) {
           flat[k] = Array.isArray(v) ? v[0] : v;
         }
         setErrors(flat);
+      } else if (errData?.error) {
+        setErrors({ general: errData.error });
+      } else if (err.message) {
+        setErrors({ general: 'Server Error: Database may be misconfigured. ' + err.message });
       } else {
-        setErrors({ general: err.response?.data?.error || 'Registration failed.' });
+        setErrors({ general: 'Registration failed.' });
       }
     } finally {
       setLoading(false);
