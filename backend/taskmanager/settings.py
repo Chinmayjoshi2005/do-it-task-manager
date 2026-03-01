@@ -72,9 +72,6 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=False)
 if db_from_env:
     DATABASES['default'].update(db_from_env)
-elif os.getenv('VERCEL') == '1':
-    # If running as a serverless function on Vercel, move SQLite to the /tmp writable directory
-    DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
 
 AUTH_USER_MODEL = 'authentication.User'
 
