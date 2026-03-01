@@ -18,7 +18,7 @@ export default function LeaderboardPage() {
         <div className="leaderboard-page animate-fade-in">
             <div className="leaderboard-header">
                 <h2 className="leaderboard-header__title gradient-text">Global Leaderboard</h2>
-                <p className="leaderboard-header__subtitle">Top 50 most productive users on TaskFlow based on tasks completed.</p>
+                <p className="leaderboard-header__subtitle">Top 50 most productive users on DO IT based on tasks completed.</p>
             </div>
 
             {loading ? (

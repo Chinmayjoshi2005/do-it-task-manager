@@ -1,4 +1,4 @@
-# TaskFlow — Production-Ready Task Manager
+# DO IT — Production-Ready Task Manager
 
 A full-stack task management application with React frontend and Django REST Framework backend.
 
