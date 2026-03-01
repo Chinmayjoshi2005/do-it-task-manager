@@ -35,10 +35,7 @@ export default function Header({ onMenuClick }) {
         </button>
         <div className="header__logo" onClick={() => navigate('/dashboard')}>
           <div className="header__logo-mark">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#6366f1" />
-              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#a5b4fc" strokeWidth="1.5" fill="none" />
-            </svg>
+            <img src="/logo.png" alt="DO IT Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
           <span className="header__logo-text">DO IT</span>
         </div>

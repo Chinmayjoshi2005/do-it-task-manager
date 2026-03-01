@@ -33,10 +33,7 @@ export default function LoginPage() {
       <div className="auth-card animate-scale-in">
         <div className="auth-logo">
           <div className="auth-logo__mark">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#6366f1" />
-              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#a5b4fc" strokeWidth="1.5" fill="none" />
-            </svg>
+            <img src="/logo.png" alt="DO IT Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
           <span className="auth-logo__text">DO IT</span>
         </div>
