@@ -20,16 +20,16 @@ const Footer = () => {
                 </div>
 
                 <div className="footer__socials">
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="GitHub">
+                    <a href="https://github.com/Chinmayjoshi2005" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="GitHub">
                         <Github size={20} />
                     </a>
-                    <a href="https://twitter.com" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="Twitter">
+                    <a href="https://x.com/Chinmay30Joshi" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="Twitter">
                         <Twitter size={20} />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/chinu-30n/" target="_blank" rel="noreferrer" className="footer__social-link" aria-label="LinkedIn">
                         <Linkedin size={20} />
                     </a>
-                    <a href="mailto:contact@doit.com" className="footer__social-link" aria-label="Email">
+                    <a href="mailto:chinmay30joshi@gmail.com" className="footer__social-link" aria-label="Email">
                         <Mail size={20} />
                     </a>
                 </div>
