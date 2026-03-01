@@ -23,8 +23,9 @@ Since you already have `dj_database_url` installed in your backend, deploying on
 1. Go to **Render.com** and sign in.
 2. Click **New +** -> **PostgreSQL**. Create the database (Free) and copy the "Internal Database URL".
 3. Click **New +** -> **Web Service**. Connect this GitHub repository.
-4. Set the Start Command to: `gunicorn taskmanager.wsgi`
-5. Set your Environment Variables:
+4. Set the **Build Command** to: `pip install -r requirements.txt && cd backend && python manage.py collectstatic --noinput && python manage.py migrate`
+5. Set the **Start Command** to: `cd backend && gunicorn taskmanager.wsgi:application`
+6. Set your Environment Variables:
    - `DATABASE_URL` = paste the URL you copied earlier.
    - `SECRET_KEY` = create a random long string.
    - `DEBUG` = `False`
