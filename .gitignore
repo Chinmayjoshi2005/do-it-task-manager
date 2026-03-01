@@ -8,6 +8,8 @@ __pycache__/
 staticfiles/
 media/
 *.log
+db.sqlite3
+*.sqlite3
 
 # Virtual env
 venv/

@@ -33,4 +33,4 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 class TaskReorderSerializer(serializers.Serializer):
-    task_ids = serializers.ListField(child=serializers.IntegerField())
+    task_ids = serializers.ListField(child=serializers.UUIDField())
